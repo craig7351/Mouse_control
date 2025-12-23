@@ -10,23 +10,22 @@ class WindowsEye:
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
 
-    def take_screenshot(self, filename="screenshot.png", add_grid=True):
+    def take_screenshot(self, filename="screenshot.png", add_grid=True, step=100):
         """截取螢幕，並可選擇是否加上座標格線"""
         screenshot = pyautogui.screenshot()
         if add_grid:
-            screenshot = self._draw_grid(screenshot)
+            screenshot = self._draw_grid(screenshot, step=step)
         
         filepath = os.path.join(self.output_dir, filename)
         screenshot.save(filepath)
         return filepath
 
-    def _draw_grid(self, image):
+    def _draw_grid(self, image, step=100):
         """在圖片上繪製座標格線，方便 AI 識別位置"""
         draw = ImageDraw.Draw(image)
         width, height = image.size
         
-        # 設定格線間距 (例如每 100 像素)
-        step = 100
+        # 設定格線間距 (預設每 100 像素)
         
         # 畫垂直線
         for x in range(0, width, step):

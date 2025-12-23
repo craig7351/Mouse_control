@@ -1,0 +1,7 @@
+pyautogui
+Pillow
+easyocr
+opencv-python
+torch
+torchvision
+torchaudio
