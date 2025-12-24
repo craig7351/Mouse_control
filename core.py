@@ -79,6 +79,10 @@ class WindowsHand:
         """移動滑鼠到指定座標"""
         pyautogui.moveTo(x, y, duration=0.3)
 
+    def get_mouse_pos(self):
+        """獲取當前滑鼠座標"""
+        return pyautogui.position()
+
 if __name__ == "__main__":
     eye = WindowsEye()
     hand = WindowsHand()
